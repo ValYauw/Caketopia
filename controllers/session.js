@@ -38,18 +38,21 @@ class SessionController {
   }
 
   static showFormEditDetails(req, res) {
-    if (req.session.authenticated) {
+    const isLoggedIn = req.session.authenticated;
+    if (!isLoggedIn) {
       return res.redirect('/');
     }
 
     const {error} = req.query;
-    const {id} = req.session.user;
-    UserInformation.findByPk(+id)
+    const session = req.session;
+    const {id} = session.user;
+    UserInformation.findOne({where: {UserId: id}, include: User})
       .then(user => {
-        const {phoneNumber, address} = user;
-        res.render('login', {
-          roles:'Vendor', 
-          url:'/login/vendors',
+        const {phoneNumber, address, User} = user;
+        const {name, email} = User;
+        res.render('editDetails', {
+          isLoggedIn, session,
+          name, email, phoneNumber, address,
           error
         });
       })
@@ -123,6 +126,31 @@ class SessionController {
         UserId = user.id;
         UserInformation.create({UserId, phoneNumber, address});
         return user;
+      })
+      .then(user => SessionController.createLoginSession(user, req))
+      .then (() => res.redirect('/'))
+      .catch((err) => {
+        if (err.name === 'SequelizeValidationError') {
+          const errors = err.errors.map(el => el.message);
+          res.redirect(`/signup?error=${errors.join(',')}`);
+          return;
+        }
+        console.log(err);
+        res.send(err);
+      })
+  }
+
+  static editUser(req, res) {
+    if (!req.session.authenticated) {
+      return res.redirect('/');
+    }
+    
+    const {email, roles, phoneNumber, address, password} = req.body;
+    let UserId;
+    User.create({email, password, roles})
+      .then(user => {
+        UserId = user.id;
+        UserInformation.create({UserId, phoneNumber, address});
       })
       .then(user => SessionController.createLoginSession(user, req))
       .then (() => res.redirect('/'))

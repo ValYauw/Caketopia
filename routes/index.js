@@ -7,6 +7,10 @@ router.get('/', Controller.showLandingPage);
 router.get('/vendors', (req, res) => res.redirect('/'));
 router.get('/cakes', (req, res) => res.redirect('/'));
 
+// Session edit user details
+router.get('/editUserDetails', SessionController.showFormEditDetails);
+router.post('/editUserDetails', SessionController.editUser);
+
 // Session log-in & log-out
 router.get('/login', SessionController.showLoginFormCustomer);
 router.post('/login', SessionController.loginCustomer);
