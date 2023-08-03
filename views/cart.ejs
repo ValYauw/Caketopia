@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart</title>
+    <%- include('partials/declaration') %>
+    <link rel="stylesheet" href="/public/assets/styleEga.css" />
+  </head>
+  <body>
+    <%- include('partials/header', {isLoggedIn, session}) %>
+    <div class="listVendors">
+      <h1>Cart</h1>
+      <h3>List of item :</h3>
+      <%if(cart !== undefined){%> <% cart.map((cart, index) => { %>
+      <div class="cart">
+        <img
+          src="<%= cart.imageUrl %>"
+          alt="<%= cart.imageUrl %>"
+          height="150px"
+          style="width: 240px"
+        />
+        <div>
+          <h4><%=cart.title%></h4>
+          <p>Price : <%=formatThousand(cart.offeredPrice)%></p>
+          <button><a href="/deleteCart/<%=index %>">delete</a></button>
+        </div>
+      </div>
+      <% }); %>
+      <div style="display: flex; justify-content: center">
+        <button style="margin: 20px auto">Buy Cakes</button>
+      </div>
+      <% } %>
+    </div>
+  </body>
+</html>
