@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transactions</title>
+    <%- include('partials/declaration') %>
+    <link rel="stylesheet" href="/public/assets/styleEga.css" />
+  </head>
+  <body>
+    <%- include('partials/header', {isLoggedIn, session}) %>
+    <div class="listVendors">
+      <h1>Cart</h1>
+      <h3>List of Transactions :</h3>
+      <div>
+        <%if(user.roles === "Customer"){ %> <% transactions.map((el, index) => {
+        %>
+        <div
+          style="
+            margin-top: 20px;
+            outline: 1px solid black;
+            border-radius: 4px;
+            padding: 12px;
+          "
+        >
+          <p><%= index+1%>. Transaction : <%=el.id%></p>
+          <p>Status : <%=el.status%></p>
+          <p><%=el.dateOrdered%></p>
+        </div>
+        <% })%> <%}%> <%if(user.roles === "Vendor"){ %> <% transactions.map((el,
+        index) => { %>
+        <div
+          style="
+            margin-top: 20px;
+            outline: 1px solid black;
+            border-radius: 4px;
+            padding: 12px;
+          "
+        >
+          <p><%= index+1%>. Transaction : <%=el.Transaction.id%></p>
+          <p>Status : <%=el.Transaction.status%></p>
+          <p><%=el.Transaction.dateOrdered%></p>
+          <button>
+            <a href="/deleteTransaction/<%=el.TransactionId%>"
+              >Cancel Transaction</a
+            >
+          </button>
+        </div>
+        <%})%> <% } %>
+      </div>
+    </div>
+  </body>
+</html>

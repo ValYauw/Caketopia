@@ -1,4 +1,10 @@
-const { Service, User, UserInformation } = require("../models/index");
+const {
+  Service,
+  User,
+  UserInformation,
+  Transaction,
+  TransactionItem,
+} = require("../models/index");
 const formatThousand = require("../helpers/formatThousand");
 const { Op } = require("sequelize");
 class Controller {
@@ -107,10 +113,7 @@ class Controller {
     const isLoggedIn = req.session.authenticated;
     const session = req.session;
     User.findByPk(id, {
-      include: [
-        {model: Service},
-        {model:UserInformation}
-      ],
+      include: [{ model: Service }, { model: UserInformation }],
     })
       .then((data) => {
         // console.log(data);
@@ -148,8 +151,101 @@ class Controller {
     let { authenticated, user, cart } = req.session;
     cart?.splice(id, 1);
     req.session.cart = cart;
-    console.log(cart, 555);
     res.redirect("/cart");
+  }
+  static addTransaction(req, res) {
+    const { user, cart } = req.session;
+    console.log(user, 77);
+    const mappedTransaction = cart.map((el) => {
+      return {
+        status: "pending confirmation",
+        dateOrdered: new Date(),
+        CustomerId: user.id,
+      };
+    });
+
+    Transaction.bulkCreate(mappedTransaction)
+      .then((data1) => {
+        const mappedTransactionItem = data1.map((el, index) => {
+          return { TransactionId: el.id, ServiceId: cart[index].id };
+        });
+        return TransactionItem.bulkCreate(mappedTransactionItem);
+      })
+      .then((data2) => {
+        req.session.cart = [];
+        res.redirect("/transactions");
+      })
+      .catch((err) => {
+        res.send(err);
+      });
+  }
+  static showTransactions(req, res) {
+    let { user } = req.session;
+    const isLoggedIn = req.session.authenticated;
+    const session = req.session;
+    if (!isLoggedIn) {
+      res.send("Harus Login");
+    }
+    if (user.roles === "Customer") {
+      Transaction.findAll({
+        where: {
+          CustomerId: user.id,
+        },
+      }).then((data) => {
+        res.render("transactions", {
+          transactions: data,
+          isLoggedIn,
+          session,
+          user,
+        });
+      });
+    }
+    if (user.roles === "Vendor") {
+      TransactionItem.findAll({
+        include: [
+          {
+            model: Transaction,
+          },
+          {
+            model: Service,
+            where: {
+              VendorId: user.id,
+            },
+          },
+        ],
+      })
+        .then((data) => {
+          res.render("transactions", {
+            transactions: data,
+            isLoggedIn,
+            session,
+            user,
+          });
+        })
+        .catch((err) => {
+          res.send(err);
+        });
+    }
+  }
+  static deleteTransaction(req, res) {
+    const { id } = req.params;
+    TransactionItem.findAll({
+      where: { TransactionId: +id }, // Replace +id with the ID you want to delete
+    })
+      .then((transactionItems) => {
+        transactionItems.forEach((item) => {
+          item.destroy();
+        });
+      })
+      .then(() => {
+        return Transaction.destroy({ where: { id: +id } });
+      })
+      .then(() => {
+        res.redirect("/transactions");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   }
 }
 

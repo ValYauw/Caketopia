@@ -14,6 +14,9 @@ router.get("/cakes", Controller.showCakes);
 router.get("/cakes/:id", Controller.addCakeToCart);
 router.get("/cart", Controller.cart);
 router.get("/deleteCart/:id", Controller.deleteCart);
+router.get("/addTransaction", Controller.addTransaction);
+router.get("/transactions", Controller.showTransactions);
+router.get("/deleteTransaction/:id", Controller.deleteTransaction);
 
 router.get("/chatroom/:id", ChatroomController.goToChatroom);
 
