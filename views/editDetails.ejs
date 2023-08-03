@@ -7,47 +7,28 @@
   <%- include('partials/declaration') %>
 </head>
 <body>
-  <%- include('partials/header', {isLoggedIn: false}) %>
+  <%- include('partials/header', {isLoggedIn, session}) %>
   <div>
-
-    <% if (error) { %>
-      <div class="notify">
-        <% const arr = error.split(","); %>
-        <ul>
-          <% arr.forEach(el => { %>
-            <li><%= el %></li>
-          <% }) %>
-        </ul>
-      </div>
-    <% } %>
-
     <form action="/signup" method="post">
 
       <div>
         <label for="name">Username</label>
-        <input name="name" type="text" placeholder="john1234">
+        <input name="name" type="text" placeholder="john1234" value="<%= session.user.name %>">
       </div>
 
       <div>
         <label for="email">E-mail</label>
-        <input name="email" type="email" placeholder="john.doe@mail.com">
+        <input name="email" type="email" placeholder="john.doe@mail.com" value="<%= session.user.email %>">
       </div>
 
       <div>
         <label for="phoneNumber">Phone Number</label>
-        <input name="phoneNumber" type="tel" placeholder="08112345678">
+        <input name="phoneNumber" type="tel" placeholder="08112345678" value="<%=  %>">
       </div>
 
       <div>
         <label for="address">Address</label>
         <input name="address" type="text" placeholder="Perumahan 123 di Jalan Anggrek, Surabaya">
-      </div>
-
-
-      <div>
-        <label for="roles">I am signing up as a:</label>
-        <input name="roles" type="radio" value="Vendor"><label for="roles">Vendor</label>
-        <input name="roles" type="radio" value="Customer"><label for="roles">Customer</label>
       </div>
       
       <div>

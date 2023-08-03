@@ -1,5 +1,6 @@
 "use strict";
 const { Model } = require("sequelize");
+const { hashPassword } = require('../helpers/password');
 module.exports = (sequelize, DataTypes) => {
     class User extends Model {
         /**
@@ -19,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
             name: {
                 type:DataTypes.STRING,
                 allowNull:false,
-                validates: {
+                validate: {
                     notNull: {msg: 'Name is required'},
                     notEmpty: {msg: 'Name is required'}
                 }
@@ -27,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
             email: {
                 type:DataTypes.STRING,
                 allowNull:false,
-                validates: {
+                validate: {
                     notNull: {msg: 'Email is required'},
                     notEmpty: {msg: 'Email is required'},
                     isEmail: {msg: 'Email is invalid'}
@@ -36,21 +37,17 @@ module.exports = (sequelize, DataTypes) => {
             password: {
                 type: DataTypes.STRING,
                 allowNull: false,
-                validates: {
-                    notNull: {msg: 'Email is required'},
-                    notEmpty: {msg: 'Email is required'},
-                    len: {
-                        msg: "Length must be at least 8 characters",
-                        args: [8, 50]
-                    }
+                validate: {
+                    notNull: {msg: 'Password is required'},
+                    notEmpty: {msg: 'Password is required'}
                 }
             },
             roles: {
                 type: DataTypes.ENUM('Vendor', 'Customer'),
                 allowNull: false,
-                validates: {
-                    notNull: {msg: 'Email is required'},
-                    notEmpty: {msg: 'Email is required'}
+                validate: {
+                    notNull: {msg: 'Please select a role'},
+                    notEmpty: {msg: 'Please select a role'}
                 }
             },
         },
@@ -59,5 +56,8 @@ module.exports = (sequelize, DataTypes) => {
             modelName: "User",
         }
     );
+    User.beforeCreate((user, options) => {
+        user.password = hashPassword(user.password);
+    })
     return User;
 };

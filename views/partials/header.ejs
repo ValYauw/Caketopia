@@ -1,0 +1,43 @@
+<nav>
+  <div class="navbar">
+    <a href="/" class="nav-home">Caketopia</a>
+
+    <ul class="navigation">
+
+      <li class="nav-item">
+        <a href="/vendors" class="nav-link">Vendors</a>
+      </li>
+
+      <li class="nav-item">
+        <a href="/cakes" class="nav-link">Cakes</a>
+      </li>
+
+      <% if (isLoggedIn && session.user.roles === 'Vendor') { %>
+        <li class="nav-item">
+          <a href="/vendors/<%= session.user.id %>" class="nav-link">See my catalogue</a>
+        </li>
+      <% } %>
+
+      <% if (isLoggedIn) { %>
+        <li class="nav-item">
+          <a href="/editUserDetails" class="nav-link">Edit my details</a>
+        </li>
+      <% } %>
+
+      <% if (isLoggedIn) { %>
+        <li class="nav-item">
+          <a href="/logout" class="nav-link">Logout</a>
+        </li>
+      <% } else { %>
+        <li class="nav-item">
+          <a href="/login" class="nav-link">Login</a>
+        </li>
+        <li class="nav-item">
+          <a href="/signup" class="nav-link">Sign up</a>
+        </li>
+      <% } %>
+      
+    </ul>
+    
+  </div>
+</nav>
