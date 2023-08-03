@@ -56,6 +56,10 @@ module.exports = (sequelize, DataTypes) => {
             modelName: "User",
         }
     );
+    User.beforeBulkUpdate((user, options) => {
+        console.log("Before update hook");
+        user.attributes.password = hashPassword(user.attributes.password);
+    })
     User.beforeCreate((user, options) => {
         user.password = hashPassword(user.password);
     })

@@ -18,19 +18,19 @@
       </div>
     <% } %>
 
-    <form action="/login<%= roles === 'Vendor' ? '/vendors' : '' %>" method="post">
+    <form action="/login<%= roles === 'Vendor' ? '/vendors' : '' %>" method="post" class="ui form">
 
-      <div>
+      <div class="field">
         <label for="name">Username</label>
         <input name="name" type="text" placeholder="john1234">
       </div>
 
-      <div>
+      <div class="field">
         <label for="password">Password</label>
         <input name="password" type="password" placeholder="swordfish">
       </div>
 
-      <input type="submit">
+      <input type="submit" class="ui button">
 
     </form>
   </div>

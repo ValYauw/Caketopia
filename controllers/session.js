@@ -146,13 +146,19 @@ class SessionController {
     }
     
     const {email, roles, phoneNumber, address, password} = req.body;
-    let UserId;
-    User.create({email, password, roles})
+    let UserId = req.session.user.id;
+    User.update({email, password, roles}, {
+      where: {id: UserId},
+      individualHooks: true
+    })
       .then(user => {
-        UserId = user.id;
-        UserInformation.create({UserId, phoneNumber, address});
+        UserInformation.update({phoneNumber, address}, {
+          where: {UserId}
+        });
+        const {id, name, roles} = user;
+        req.session.user = {id, name, roles};
+        // SessionController.createLoginSession(user, req)
       })
-      .then(user => SessionController.createLoginSession(user, req))
       .then (() => res.redirect('/'))
       .catch((err) => {
         if (err.name === 'SequelizeValidationError') {

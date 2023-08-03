@@ -4,8 +4,11 @@ const SessionController = require("../controllers/session");
 
 router.get('/', Controller.showLandingPage);
 
+router.get('/session-data', Controller.showSessionData);
+
 router.get('/vendors', (req, res) => res.redirect('/'));
 router.get('/cakes', (req, res) => res.redirect('/'));
+router.get('/cakes/:id', Controller.addCakeToCart);
 
 // Session edit user details
 router.get('/editUserDetails', SessionController.showFormEditDetails);
