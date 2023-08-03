@@ -23,18 +23,10 @@ module.exports = {
             },
             offeredPrice: {
                 allowNull: false,
-                references: {
-                    model: "Users",
-                    key: "id",
-                },
                 type: Sequelize.INTEGER,
             },
-            VendorId: {
-                allowNull: false,
-                type: Sequelize.INTEGER,
-            },
+
             isActive: {
-                allowNull: false,
                 type: Sequelize.BOOLEAN,
             },
             createdAt: {
