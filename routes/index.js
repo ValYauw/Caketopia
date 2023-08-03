@@ -10,6 +10,8 @@ router.get("/vendors", Controller.showVendors);
 router.get("/vendors/:id", Controller.showVendorById);
 router.get("/cakes", Controller.showCakes);
 router.get("/cakes/:id", Controller.addCakeToCart);
+router.get("/cart", Controller.cart);
+router.get("/deleteCart/:id", Controller.deleteCart);
 
 // Session edit user details
 router.get("/editUserDetails", SessionController.showFormEditDetails);
