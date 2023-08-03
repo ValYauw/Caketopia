@@ -9,7 +9,9 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
-            Service.belongsTo(models.User);
+            Service.belongsTo(models.User, {
+                foreignKey: "VendorId",
+            });
             Service.hasMany(models.TransactionItem);
         }
     }
