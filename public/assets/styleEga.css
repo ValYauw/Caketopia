@@ -4,6 +4,7 @@
     justify-content: center;
     flex-wrap: wrap;
     width: 70%;
+    /* order: 2; */
 }
 .card {
     padding: 12px;
@@ -26,4 +27,9 @@
     width: fit-content;
     margin: 40px auto;
     gap: 40px;
+}
+
+.listVendors {
+    width: 60%;
+    margin: 40px auto;
 }

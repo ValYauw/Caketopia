@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vendor Detail</title>
+        <%- include('partials/declaration') %>
+        <link rel="stylesheet" href="/public/assets/styleEga.css" />
+    </head>
+    <body>
+        <%- include('partials/header', {isLoggedIn, session}) %>
+        <div class="listVendors">
+            <h1>Vendor : <%= vendors.name %></h1>
+            <p>E-mail : <%= vendors.email %></p>
+            <h3>List of Item : </h3>
+        </div>
+        <div class="flexDiv">
+            <% vendors.Services.forEach((el)=>{ %>
+            <div class="card">
+                <img
+                    src="<%= el.imageUrl %>"
+                    alt="<%= el.title %>"
+                    height="150px"
+                    style="margin: auto; width: 240px"
+                />
+                <div
+                    style="text-align: center; padding: 0px"
+                    class="resetMargin"
+                >
+                    <h4><%= el.title %></h4>
+                    <p>Price : <%= formatThousand(el.offeredPrice) %></p>
+                    <% if (el.isActive) { %>
+                        <p>Item Available : <span>&#9989;</span></p>
+                        <%}%> <% if (el.isActive === false) { %>
+                        <p>Item Available : <span>&#10060;</span></p>
+                        <%}%>
+                    
+                </div>
+                
+                
+            </div>
+            <% }) %>
+    </body>
+</html>
