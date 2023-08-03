@@ -34,6 +34,7 @@ class Controller {
       Service.findByPk(+id, {where: {isActive: true}})
         .then((service) => {
           if (service) session.cart.push(service);
+          res.redirect('/cakes');
         })
         .catch(err => {
           console.log(err);
