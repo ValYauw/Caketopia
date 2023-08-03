@@ -1,5 +1,5 @@
-const {User, UserInformation} = require("../models/index");
-const {Op} = require('sequelize');
+const { User, UserInformation } = require("../models/index");
+const { Op } = require('sequelize');
 const { comparePassword } = require('../helpers/password');
 
 class SessionController {
@@ -66,6 +66,7 @@ class SessionController {
     req.session.authenticated = true;
     const {id, name, roles} = user;
     req.session.user = {id, name, roles};
+    req.session.chatLog = [];
     console.log("A user has logged in");
     console.log(req.session);
   }
@@ -110,6 +111,7 @@ class SessionController {
           return res.redirect('/login/vendors?error=Password%20is%20wrong');
         }
         SessionController.createLoginSession(user, req);
+        
         res.redirect(`/vendors/${user.id}`);
       })
       .catch((err) => {

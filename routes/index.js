@@ -1,6 +1,8 @@
 const router = require("express").Router();
+
 const Controller = require("../controllers/controller");
 const SessionController = require("../controllers/session");
+const ChatroomController = require("../controllers/chatroom");
 
 router.get("/", Controller.showLandingPage);
 
@@ -10,6 +12,8 @@ router.get("/vendors", Controller.showVendors);
 router.get("/vendors/:id", Controller.showVendorById);
 router.get("/cakes", Controller.showCakes);
 router.get("/cakes/:id", Controller.addCakeToCart);
+
+router.get("/chatroom/:id", ChatroomController.goToChatroom);
 
 // Session edit user details
 router.get("/editUserDetails", SessionController.showFormEditDetails);

@@ -5,22 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <%- include('partials/declaration') %>
+  <link rel="stylesheet" href="/public/assets/landing-page.css">
 </head>
 <body>
   <%- include('partials/header') %>
 
   <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-    <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden" style="min-width:50%;">
+    <div 
+      class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden" 
+      style="min-width:50%;"
+    >
         <div class="my-3 py-3">
         <a href="/vendors" class="display-5 landing-page-link">Vendors</a>
         </div>
-        <div class="bg-body-tertiary shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+        <div 
+          class="bg-body-tertiary shadow-sm mx-auto" 
+          style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"
+          id="#vendors"
+        ></div>
     </div>
     <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden" style="min-width:50%;">
         <div class="my-3 p-3">
         <a href="/cakes" class="display-5 landing-page-link">Cakes</a>
         </div>
-        <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+        <div 
+          class="bg-dark shadow-sm mx-auto" 
+          style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"
+          id="#cakes"
+        ></div>
     </div>
   </div>
 

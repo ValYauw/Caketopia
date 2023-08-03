@@ -1,10 +1,10 @@
-const { Service, User } = require("../models/index");
+const { Service, User, UserInformation } = require("../models/index");
 const formatThousand = require("../helpers/formatThousand");
 const { Op } = require("sequelize");
 class Controller {
     static showSessionData(req, res) {
-        const { authenticated, user, cart } = req.session;
-        res.send({ authenticated, user, cart });
+        const { authenticated, user, cart, chatLog } = req.session;
+        res.send({ authenticated, user, cart, chatLog });
     }
     static showLandingPage(req, res) {
         const isLoggedIn = req.session.authenticated;
@@ -107,9 +107,10 @@ class Controller {
         const isLoggedIn = req.session.authenticated;
         const session = req.session;
         User.findByPk(id, {
-            include: {
-                model: Service,
-            },
+            include: [
+                {model: Service},
+                {model:UserInformation}
+            ],
         })
             .then((data) => {
                 // console.log(data);

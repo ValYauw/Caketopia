@@ -7,17 +7,24 @@
   <link rel="stylesheet" href="/public/assets/socket-messaging.css">
 </head>
 <body>
-
-  <div>
-    <ul id="messages"></ul>
-    <form id="form" action="">
-      <input id="input" autocomplete="off" /><button>Send</button>
-    </form>
-  </div>
+  <ul id="messages">
+    <% session.chatLog?.forEach( line => { %>
+      <li>
+        <p <%= session.user.name === line.from ? 'right-align' : '' %>><%= line.content %></p>
+        <p class="user<%= session.user.name === line.from ? ' right-align' : '' %>"><%= line.from %></p>
+      </li>
+    <% }) %>
+  </ul>
+  <form id="form" action="">
+    <input id="input" autocomplete="off" /><button>Send</button>
+  </form>
 
   <script src="/socket.io/socket.io.js"></script>
   <script>
-    let socket = io();
+    const username = '<%= session.user.name %>';
+    let socket = io.connect();
+    const roomName = `vendor_<%= id %>`;
+    socket.emit('join', roomName);
 
     let messages = document.getElementById('messages');
     let form = document.getElementById('form');
@@ -26,14 +33,22 @@
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       if (input.value) {
-        socket.emit('private message', input.value);
+        socket.emit('private message', {
+          content: input.value, roomName, from: username
+        });
+        // Tambahkan pos dari dr sendiri di window chat sendiri
+        let item = document.createElement('li');
+        item.innerHTML = `<p class="right-align">${input.value}</p><p class="right-align user">${username}</p>`;
+        messages.appendChild(item);
+        window.scrollTo(0, document.body.scrollHeight);
         input.value = '';
       }
     });
 
-    socket.on('private message', function(msg) {
-      var item = document.createElement('li');
-      item.textContent = msg;
+    socket.on('private message', function({content, roomName, from}) {
+      // Tambahkan pos dari dr sendiri di window chat orang lain
+      let item = document.createElement('li');
+      item.innerHTML = `<p>${content}</p><p class="user">${username}</p>`;
       messages.appendChild(item);
       window.scrollTo(0, document.body.scrollHeight);
     });

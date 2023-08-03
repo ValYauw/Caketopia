@@ -52,3 +52,12 @@ body {
 #messages>li:nth-child(odd) {
   background: #efefef;
 }
+
+p.right-align {
+  text-align: right;
+}
+
+p.user {
+  font-size: smaller;
+  font-style: italic;
+}
