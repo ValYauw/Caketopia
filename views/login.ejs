@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-  <%- include('partials/declaration') %>
-</head>
-<body>
-  <%- include('partials/header', {isLoggedIn: false}) %>
-  <div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Login</title>
+        <%- include('partials/declaration') %>
+    </head>
+    <body>
+        <%- include('partials/header', {isLoggedIn: false}) %>
+        <div>
+            <h1>You're logging in as a <strong><%= roles %></strong></h1>
 
-    <h1>You're logging in as a <strong><%= roles %></strong></h1>
+            <% if (error) { %>
+            <div class="notify"><%= error %></div>
+            <% } %>
 
-    <% if (error) { %>
-      <div class="notify">
-        <%= error %>
-      </div>
-    <% } %>
+            <form
+                action="/login<%= roles === 'Vendor' ? '/vendors' : '' %>"
+                method="post"
+            >
+                <div>
+                    <label for="name">Username</label>
+                    <input name="name" type="text" placeholder="john1234" />
+                </div>
 
-    <form action="/login<%= roles === 'Vendor' ? '/vendors' : '' %>" method="post">
+                <div>
+                    <label for="password">Password</label>
+                    <input
+                        name="password"
+                        type="password"
+                        placeholder="swordfish"
+                    />
+                </div>
 
-      <div>
-        <label for="name">Username</label>
-        <input name="name" type="text" placeholder="john1234">
-      </div>
-
-      <div>
-        <label for="password">Password</label>
-        <input name="password" type="password" placeholder="swordfish">
-      </div>
-
-      <input type="submit">
-
-    </form>
-  </div>
-</body>
+                <input type="submit" />
+            </form>
+        </div>
+    </body>
 </html>

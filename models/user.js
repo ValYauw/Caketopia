@@ -1,6 +1,6 @@
 "use strict";
 const { Model } = require("sequelize");
-const { hashPassword } = require('../helpers/password');
+const { hashPassword } = require("../helpers/password");
 module.exports = (sequelize, DataTypes) => {
     class User extends Model {
         /**
@@ -11,44 +11,48 @@ module.exports = (sequelize, DataTypes) => {
         static associate(models) {
             // define association here
             User.hasOne(models.UserInformation);
-            User.hasMany(models.Transaction);
-            User.hasMany(models.Service);
+            User.hasMany(models.Transaction, {
+                foreignKey: "CustomerId",
+            });
+            User.hasMany(models.Service, {
+                foreignKey: "VendorId",
+            });
         }
     }
     User.init(
         {
             name: {
-                type:DataTypes.STRING,
-                allowNull:false,
+                type: DataTypes.STRING,
+                allowNull: false,
                 validate: {
-                    notNull: {msg: 'Name is required'},
-                    notEmpty: {msg: 'Name is required'}
-                }
+                    notNull: { msg: "Name is required" },
+                    notEmpty: { msg: "Name is required" },
+                },
             },
             email: {
-                type:DataTypes.STRING,
-                allowNull:false,
+                type: DataTypes.STRING,
+                allowNull: false,
                 validate: {
-                    notNull: {msg: 'Email is required'},
-                    notEmpty: {msg: 'Email is required'},
-                    isEmail: {msg: 'Email is invalid'}
-                }
+                    notNull: { msg: "Email is required" },
+                    notEmpty: { msg: "Email is required" },
+                    isEmail: { msg: "Email is invalid" },
+                },
             },
             password: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
-                    notNull: {msg: 'Password is required'},
-                    notEmpty: {msg: 'Password is required'}
-                }
+                    notNull: { msg: "Password is required" },
+                    notEmpty: { msg: "Password is required" },
+                },
             },
             roles: {
-                type: DataTypes.ENUM('Vendor', 'Customer'),
+                type: DataTypes.ENUM("Vendor", "Customer"),
                 allowNull: false,
                 validate: {
-                    notNull: {msg: 'Please select a role'},
-                    notEmpty: {msg: 'Please select a role'}
-                }
+                    notNull: { msg: "Please select a role" },
+                    notEmpty: { msg: "Please select a role" },
+                },
             },
         },
         {
@@ -58,6 +62,6 @@ module.exports = (sequelize, DataTypes) => {
     );
     User.beforeCreate((user, options) => {
         user.password = hashPassword(user.password);
-    })
+    });
     return User;
 };
