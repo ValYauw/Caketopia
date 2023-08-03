@@ -9,34 +9,34 @@
 <body>
   <%- include('partials/header', {isLoggedIn, session}) %>
   <div>
-    <form action="/editUserDetails" method="post">
+    <form action="/editUserDetails" method="post" class="ui form">
 
-      <div>
+      <div class="field">
         <label for="name">Username</label>
         <input name="name" type="text" placeholder="john1234" value="<%= name %>" disabled>
       </div>
 
-      <div>
+      <div class="field">
         <label for="email">E-mail</label>
         <input name="email" type="email" placeholder="john.doe@mail.com" value="<%= email %>">
       </div>
 
-      <div>
+      <div class="field">
         <label for="phoneNumber">Phone Number</label>
         <input name="phoneNumber" type="tel" placeholder="08112345678" value="<%= phoneNumber %>">
       </div>
 
-      <div>
+      <div class="field">
         <label for="address">Address</label>
         <input name="address" type="text" placeholder="Perumahan 123 di Jalan Anggrek, Surabaya" value="<%= address %>">
       </div>
       
-      <div>
+      <div class="field">
         <label for="password">Password</label>
         <input name="password" type="password" placeholder="swordfish">
       </div>
 
-      <input type="submit">
+      <input type="submit" class="ui button">
 
     </form>
   </div>

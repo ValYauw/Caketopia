@@ -8,7 +8,9 @@
 </head>
 <body>
   <%- include('partials/header', {isLoggedIn: false}) %>
-  <div>
+  <div class="main">
+
+    <h1>Register Information</h1>
 
     <% if (error) { %>
       <div class="notify">
@@ -21,43 +23,47 @@
       </div>
     <% } %>
 
-    <form action="/signup" method="post">
+    <form action="/signup" method="post" class="ui form">
 
-      <div>
+      <div class="field">
         <label for="name">Username</label>
         <input name="name" type="text" placeholder="john1234">
       </div>
 
-      <div>
+      <div class="field">
         <label for="email">E-mail</label>
         <input name="email" type="email" placeholder="john.doe@mail.com">
       </div>
 
-      <div>
+      <div class="field">
         <label for="phoneNumber">Phone Number</label>
         <input name="phoneNumber" type="tel" placeholder="08112345678">
       </div>
 
-      <div>
+      <div class="field">
         <label for="address">Address</label>
         <input name="address" type="text" placeholder="Perumahan 123 di Jalan Anggrek, Surabaya">
       </div>
 
-
-      <div>
+      <div class="field">
         <label for="roles">I am signing up as a:</label>
-        <input name="roles" type="radio" value="Vendor"><label for="roles">Vendor</label>
-        <input name="roles" type="radio" value="Customer"><label for="roles">Customer</label>
+        <div class="ui radio checkbox">
+          <input name="roles" type="radio" value="Vendor"><label for="roles">Vendor</label>
+        </div>
+        <div class="ui radio checkbox">
+          <input name="roles" type="radio" value="Customer"><label for="roles">Customer</label>
+        </div>
       </div>
       
-      <div>
+      <div class="field">
         <label for="password">Password</label>
         <input name="password" type="password" placeholder="swordfish">
       </div>
 
-      <input type="submit">
+      <input type="submit" class="ui button">
 
     </form>
   </div>
+
 </body>
 </html>

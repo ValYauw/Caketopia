@@ -41,3 +41,9 @@
     
   </div>
 </nav>
+
+<% if (isLoggedIn) { %>
+  <div>
+    Welcome, <%= session.user.name %>! <i>(logged in as a <%= session.user.roles %>)</i>
+  </div>
+<% } %>
