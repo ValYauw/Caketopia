@@ -7,11 +7,14 @@
 </head>
 <body>
   <div>
-    <form action="/login" method="post">
+
+    <h1>You're logging in as a <strong><%= roles %></strong></h1>
+
+    <form action="<%= url %>" method="post">
 
       <div>
-        <label for="username">Username</label>
-        <input name="username" type="text" placeholder="john1234">
+        <label for="name">Username</label>
+        <input name="name" type="text" placeholder="john1234">
       </div>
 
       <div>
@@ -20,7 +23,7 @@
       </div>
 
       <input type="submit">
-      
+
     </form>
   </div>
 </body>

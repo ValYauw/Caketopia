@@ -14,9 +14,31 @@ module.exports = (sequelize, DataTypes) => {
     }
     UserInformation.init(
         {
-            UserId: DataTypes.INTEGER,
-            phoneNumber: DataTypes.STRING,
-            address: DataTypes.STRING,
+            UserId: {
+                type: DataTypes.INTEGER,
+                allowNull:false,
+                validates: {
+                    notNull: {msg: 'User ID is required'},
+                    notEmpty: {msg: 'User ID is required'}
+                }
+            },
+            phoneNumber: {
+                type: DataTypes.INTEGER,
+                allowNull:false,
+                validates: {
+                    notNull: {msg: 'Phone number is required'},
+                    notEmpty: {msg: 'Phone number is required'},
+                    isNumeric: {msg: 'Phone number must be numeric'}
+                }
+            },
+            address: {
+                type: DataTypes.INTEGER,
+                allowNull:false,
+                validates: {
+                    notNull: {msg: 'Address is required'},
+                    notEmpty: {msg: 'Address is required'}
+                }
+            },
         },
         {
             sequelize,
