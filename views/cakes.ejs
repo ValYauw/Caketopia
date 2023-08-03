@@ -12,14 +12,17 @@
         <%- include('partials/header', {isLoggedIn, session}) %>
         <div class="centerSearch">
             <div>
-                <form>
+                <form action="/cakes" method="get">
                     <input type="text" name="search" />
                     <button type="submit">Search</button>
                 </form>
             </div>
             <div>
-                <label>Sort by: </label><button>Available</button
-                ><button>Not Available</button>
+                <label>Filter by: </label
+                ><button><a href="/cakes?filter=true">Available</a></button
+                ><button>
+                    <a href="/cakes?filter=false">Not Available</a>
+                </button>
             </div>
         </div>
         <div class="flexDiv">
@@ -29,14 +32,14 @@
                     src="<%= el.imageUrl %>"
                     alt="<%= el.title %>"
                     height="150px"
-                    style="display: block; margin: auto; width: 240px"
+                    style="margin: auto; width: 240px"
                 />
                 <div
                     style="text-align: center; padding: 0px"
                     class="resetMargin"
                 >
-                    <h4><%= el.title%></h4>
-                    <p>Price : <%= el.offeredPrice %></p>
+                    <h4><%= el.formatCake%></h4>
+                    <p>Price : <%= formatThousand(el.offeredPrice) %></p>
 
                     <% if (el.isActive) { %>
                     <p>Item Available : <span>&#9989;</span></p>

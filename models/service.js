@@ -14,6 +14,23 @@ module.exports = (sequelize, DataTypes) => {
             });
             Service.hasMany(models.TransactionItem);
         }
+
+        get formatCake() {
+            let title = "Cake: ";
+
+            return title + this.title;
+        }
+
+        static getServiceByAvailability(filter) {
+            return Service.findAll({
+                include: {
+                    model: sequelize.models.User,
+                },
+                where: {
+                    isActive: filter === "true",
+                },
+            });
+        }
     }
     Service.init(
         {

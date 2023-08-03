@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vendors</title>
+        <%- include('partials/declaration') %>
+        <link rel="stylesheet" href="/public/assets/styleEga.css" />
+    </head>
+    <body>
+        <%- include('partials/header', {isLoggedIn, session}) %>
+        <div class="listVendors">
+            <h1>List of Vendors:</h1>
+            <% vendors.map((vendor, index) => { %>
+            <p>
+                <%= index+1 %>.
+                <a href="/vendors/<%= vendor.id %>"><%= vendor.name %></a>
+            </p>
+            <% }); %>
+        </div>
+    </body>
+</html>
