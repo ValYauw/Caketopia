@@ -15,8 +15,22 @@ module.exports = (sequelize, DataTypes) => {
     }
     TransactionItem.init(
         {
-            TransactionId: DataTypes.INTEGER,
-            ServiceId: DataTypes.INTEGER,
+            TransactionId: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                validates: {
+                    notNull: { msg: "TransactionId is required" },
+                    notEmpty: { msg: "TransactionId is required" },
+                },
+            },
+            ServiceId: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                validates: {
+                    notNull: { msg: "ServiceId is required" },
+                    notEmpty: { msg: "ServiceId is required" },
+                },
+            },
         },
         {
             sequelize,
