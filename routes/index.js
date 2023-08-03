@@ -4,6 +4,8 @@ const SessionController = require("../controllers/session");
 
 router.get("/", Controller.showLandingPage);
 
+router.get("/session-data", Controller.showSessionData);
+
 router.get("/vendors", (req, res) => res.redirect('/'));
 router.get("/cakes", Controller.showCakes);
 router.get("/cakes/:id", Controller.addCakeToCart);
