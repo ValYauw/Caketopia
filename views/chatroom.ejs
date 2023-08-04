@@ -48,7 +48,7 @@
     socket.on('private message', function({content, roomName, from}) {
       // Tambahkan pos dari dr sendiri di window chat orang lain
       let item = document.createElement('li');
-      item.innerHTML = `<p>${content}</p><p class="user">${username}</p>`;
+      item.innerHTML = `<p>${content}</p><p class="user">${from}</p>`;
       messages.appendChild(item);
       window.scrollTo(0, document.body.scrollHeight);
     });

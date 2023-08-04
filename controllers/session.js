@@ -155,8 +155,10 @@ class SessionController {
       {
         where: { id: UserId },
         individualHooks: true,
+        returning: true
       }
     )
+      .then(() => User.findOne({where: { id: UserId }}))
       .then((user) => {
         UserInformation.update(
           { phoneNumber, address },
@@ -165,6 +167,7 @@ class SessionController {
           }
         );
         const { id, name, roles } = user;
+        console.log(id, name, roles);
         req.session.user = { id, name, roles };
         // SessionController.createLoginSession(user, req)
       })

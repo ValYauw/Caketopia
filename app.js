@@ -52,7 +52,7 @@ io.on('connection', (socket) => {
         //   });
         // Kembalikan isi pesan ke kode client-side
         socket.to(roomName).emit('private message', {
-            content, roomName
+            content, roomName, from
         });
     });
 
