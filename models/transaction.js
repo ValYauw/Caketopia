@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
   Transaction.init(
     {
       status: {
-        type: DataTypes.STRING,
+        type: DataTypes.ENUM('Pending confirmation', 'Payment pending', 'Preparing'),
         allowNull: false,
         validates: {
           notNull: { msg: "Status is required" },

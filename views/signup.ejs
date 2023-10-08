@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Signup</title>
+  <title>Caketopia - Signup</title>
   <%- include('partials/declaration') %>
 </head>
 <body>
@@ -26,8 +26,8 @@
     <form action="/signup" method="post" class="ui form">
 
       <div class="field">
-        <label for="name">Username</label>
-        <input name="name" type="text" placeholder="john1234">
+        <label for="name">Name</label>
+        <input name="name" type="text" placeholder="John Doe">
       </div>
 
       <div class="field">
@@ -46,12 +46,12 @@
       </div>
 
       <div class="field">
-        <label for="roles">I am signing up as a:</label>
+        <label for="role">I am signing up as a:</label>
         <div class="ui radio checkbox">
-          <input name="roles" type="radio" value="Vendor"><label for="roles">Vendor</label>
+          <input name="role" type="radio" value="Vendor"><label for="role">Vendor</label>
         </div>
         <div class="ui radio checkbox">
-          <input name="roles" type="radio" value="Customer"><label for="roles">Customer</label>
+          <input name="role" type="radio" value="Customer"><label for="role">Customer</label>
         </div>
       </div>
       

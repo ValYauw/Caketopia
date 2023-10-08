@@ -11,33 +11,44 @@
         <a href="/cakes" class="nav-link">Cakes</a>
       </li>
 
-      <% if (isLoggedIn && session.user.roles === 'Vendor') { %>
-      <li class="nav-item">
-        <a href="/vendors/<%= session.user.id %>" class="nav-link"
-          >See my catalogue</a
-        >
-      </li>
-      <% } %> <% if (isLoggedIn) { %>
-      <li class="nav-item">
-        <a href="/editUserDetails" class="nav-link">Edit my details</a>
-      </li>
-      <% } %> <% if (isLoggedIn) { %>
-      <li class="nav-item">
-        <a href="/transactions" class="nav-link">Transactions</a>
-      </li>
-      <li class="nav-item">
-        <a href="/cart" class="nav-link">Cart</a>
-      </li>
-      <li class="nav-item">
-        <a href="/logout" class="nav-link">Logout</a>
-      </li>
+      <% if (isLoggedIn) { %>
+
+        <% if (session.user.role === 'Vendor') { %>
+          <li class="nav-item">
+            <a href="/vendors/<%= session.user.id %>" class="nav-link"
+              >See my catalogue</a
+            >
+          </li>
+        <% } %>
+
+        <!-- <li class="nav-item">
+          <a href="/editUserDetails" class="nav-link">Edit my details</a>
+        </li> -->
+
+        <li class="nav-item">
+          <a href="/transactions" class="nav-link">Transactions</a>
+        </li>
+
+        <% if (session.user.role === 'Customer') { %>
+          <li class="nav-item">
+            <a href="/cart" class="nav-link">Cart</a>
+          </li>
+        <% } %>
+
+        <li class="nav-item">
+          <a href="/logout" class="nav-link">Logout</a>
+        </li>
+
       <% } else { %>
-      <li class="nav-item">
-        <a href="/login" class="nav-link">Login</a>
-      </li>
-      <li class="nav-item">
-        <a href="/signup" class="nav-link">Sign up</a>
-      </li>
+
+        <li class="nav-item">
+          <a href="/login" class="nav-link">Login</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="/signup" class="nav-link">Sign up</a>
+        </li>
+
       <% } %>
     </ul>
   </div>
@@ -46,6 +57,6 @@
 <% if (isLoggedIn) { %>
 <div>
   Welcome, <%= session.user.name %>!
-  <i>(logged in as a <%= session.user.roles %>)</i>
+  <i>(logged in as a <%= session.user.role %>)</i>
 </div>
 <% } %>

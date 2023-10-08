@@ -1,142 +1,50 @@
 [
     {
-        "id": 1,
-        "name": "Min Poppleton",
-        "email": "mpoppleton0@adobe.com",
-        "password": "$2a$04$Y9pJ9Hq3p5vtvxAGdjY2IO07hZZM6nNoBz6s7j9kqtVZ.g1SFjcuy",
-        "roles": "Customer"
+        "name": "John Doe",
+        "email": "john.doe@mail.com",
+        "password": "password",
+        "role": "Vendor",
+        "phoneNumber": "08112357723",
+        "address": "Perumahan Puri Mansion, Puri Indah, Jakarta Barat"
     },
     {
-        "id": 2,
-        "name": "Ebeneser Medway",
-        "email": "emedway1@sun.com",
-        "password": "$2a$04$Fja8TFBzTGi/jv5Hhil0K.xaEe4eEhjhdCxHK9dC1bZKrgIMPpUGq",
-        "roles": "Customer"
+        "name": "Jane Doe",
+        "email": "jane.doe@mail.com",
+        "password": "password",
+        "role": "Vendor",
+        "phoneNumber": "08113557723",
+        "address": "Perumahan Puri Mansion, Puri Indah, Jakarta Barat"
     },
     {
-        "id": 3,
-        "name": "Wat Hayer",
-        "email": "whayer2@pbs.org",
-        "password": "$2a$04$zl3qc4M0iaZKadaUUG86qeZWekFMvhQN06//E3sSmsdTfz6VEv0im",
-        "roles": "Vendor"
+        "name": "Jack Bowers",
+        "email": "jack.bowers@mail.com",
+        "password": "password",
+        "role": "Customer",
+        "phoneNumber": "082289147781",
+        "address": "Perumahan Chicago, Kebun Jeruk, Jakarta Barat"
     },
     {
-        "id": 4,
-        "name": "Natalina Tellenbroker",
-        "email": "ntellenbroker3@wikia.com",
-        "password": "$2a$04$QdzySpf46GalWuyIqmBOpurxtKJUly59WVR9yhUxILec1U9PEDzbW",
-        "roles": "Customer"
+        "name": "Ella Beckham",
+        "email": "ella.beckham@mail.com",
+        "password": "password",
+        "role": "Customer",
+        "phoneNumber": "08113354525",
+        "address": "Apartment Casa Domina, Pagedangan, BSD City"
     },
     {
-        "id": 5,
-        "name": "Austine Liddall",
-        "email": "aliddall4@vimeo.com",
-        "password": "$2a$04$cN9QkM1VS4cIUR.6x2TuouCCZtUBwdJR2iv0CRnP71B/PG8jr1TqG",
-        "roles": "Vendor"
+        "name": "Sally Su",
+        "email": "sally.su@mail.com",
+        "password": "password",
+        "role": "Customer",
+        "phoneNumber": "08235609123",
+        "address": "Apartment Seasons City, Jakarta Barat"
     },
     {
-        "id": 6,
-        "name": "Marquita Gittose",
-        "email": "mgittose5@xinhuanet.com",
-        "password": "$2a$04$JmHkmEfaMa1Obj678/X8O.oK.d8MxzCZjxUEwEyrMIUqUHTrwkKdG",
-        "roles": "Customer"
-    },
-    {
-        "id": 7,
-        "name": "Wood Rothera",
-        "email": "wrothera6@indiegogo.com",
-        "password": "$2a$04$ri2pXdAAFq1Mgb1LCxeGz..OsEvZr3n26PvU2zKPww7J9q6chGxsG",
-        "roles": "Customer"
-    },
-    {
-        "id": 8,
-        "name": "Fulvia Issitt",
-        "email": "fissitt7@ox.ac.uk",
-        "password": "$2a$04$hgPVPrvwpDjuVJUeBaN1IOldY2UhU8Ly8FS37tn8kM7vyTbTCPci.",
-        "roles": "Customer"
-    },
-    {
-        "id": 9,
-        "name": "Catharine Cescoti",
-        "email": "ccescoti8@canalblog.com",
-        "password": "$2a$04$8QGjnMca1v4ejemRPKu7/ecCZ0Ji5NOz57uOGKt7Yx7QkhS/3X09C",
-        "roles": "Customer"
-    },
-    {
-        "id": 10,
-        "name": "Aeriell Loughan",
-        "email": "aloughan9@github.com",
-        "password": "$2a$04$gk7CWNZ.EAcjad/IKD2.8ehRgcOKFVtLsUMghNelsjl2sgtxFf7T2",
-        "roles": "Customer"
-    },
-    {
-        "id": 11,
-        "name": "Sullivan Connichie",
-        "email": "sconnichiea@typepad.com",
-        "password": "$2a$04$WVaeGhbipcGNAKWpuLl9nOPNmUI2QjNk76WDn3tPQTmTE9CEe5xVa",
-        "roles": "Customer"
-    },
-    {
-        "id": 12,
-        "name": "Annabell Garvagh",
-        "email": "agarvaghb@delicious.com",
-        "password": "$2a$04$mdIH9jwlbZwzpDYRkH1/lOERvNy4x6lMl3sTOCImE.IEwOFCxXY8i",
-        "roles": "Customer"
-    },
-    {
-        "id": 13,
-        "name": "Nappie Collete",
-        "email": "ncolletec@alexa.com",
-        "password": "$2a$04$Ys4FcSIsYGzFR0BbSUvnQe0zfDzpY4HDlcEXSiOf56do4TDjN62PO",
-        "roles": "Customer"
-    },
-    {
-        "id": 14,
-        "name": "Vinita Odegaard",
-        "email": "vodegaardd@unesco.org",
-        "password": "$2a$04$3JyCa8HluQSwqnNQpYQzceI4USzpIGKZ6GGtBG/fnNVZYbq99SPra",
-        "roles": "Customer"
-    },
-    {
-        "id": 15,
-        "name": "Marchelle Venn",
-        "email": "mvenne@friendfeed.com",
-        "password": "$2a$04$TSw/EP/gJJgqXbxeG/SB3Oqev8CE/EVvVLPcNHebac9LyxStHl2Zq",
-        "roles": "Customer"
-    },
-    {
-        "id": 16,
-        "name": "Layney Opdenorth",
-        "email": "lopdenorthf@samsung.com",
-        "password": "$2a$04$I3Tki86jy0CVGmedEz9WXO/A7WolgyZfsLc2WzSaCPfJKNE9phdRG",
-        "roles": "Customer"
-    },
-    {
-        "id": 17,
-        "name": "Marni Archbell",
-        "email": "marchbellg@bloglovin.com",
-        "password": "$2a$04$elV/JSjQewATXroTxK1cRutjwYdurnA78vmVISBMKHSjfzeYbiuWS",
-        "roles": "Customer"
-    },
-    {
-        "id": 18,
-        "name": "Timothea Sheaber",
-        "email": "tsheaberh@google.com.br",
-        "password": "$2a$04$05kFX05nuVAziNpOnAkcGONqMN7t7OhDbgxCNWEBzywQaA1Srzdy6",
-        "roles": "Customer"
-    },
-    {
-        "id": 19,
-        "name": "Porter McLuckie",
-        "email": "pmcluckiei@bravesites.com",
-        "password": "$2a$04$HVcXNI0e.KZmnU2XQiMvuumqDvV3YECgTgndEVnle/Wnyqi8hxsuK",
-        "roles": "Customer"
-    },
-    {
-        "id": 20,
-        "name": "Devlen Pickavant",
-        "email": "dpickavantj@e-recht24.de",
-        "password": "$2a$04$lDLL2xWs2lGhaYJqZtGnIO7hu7mpHZBeSR1wNvLqaTrHcMCF1fCN.",
-        "roles": "Customer"
+        "name": "Susanto",
+        "email": "susanto@mail.com",
+        "password": "password",
+        "role": "Customer",
+        "phoneNumber": "08235609125",
+        "address": "Apartment Seasons City, Jakarta Barat"
     }
 ]

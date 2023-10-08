@@ -25,7 +25,14 @@ module.exports = {
                 allowNull: false,
                 type: Sequelize.INTEGER,
             },
-
+            VendorId: {
+                allowNull: false,
+                type: Sequelize.INTEGER,
+                references: {
+                    model: "Users",
+                    key: "id",
+                },
+            },
             isActive: {
                 type: Sequelize.BOOLEAN,
             },

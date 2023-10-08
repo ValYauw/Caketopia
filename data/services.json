@@ -1,0 +1,82 @@
+[
+  {
+      "title": "Red Velvet Cake",
+      "description": "Red Velvet Cake with creamy fillings.",
+      "imageUrl": "https://www.allrecipes.com/thmb/gDJ1S6ETLfWGyyWw_4A_IGhvDYE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/9295_red-velvet-cake_ddmfs_4x3_1129-a8ab17b825e3464a9a53ceeda54ff461.jpg",
+      "offeredPrice": 50000,
+      "VendorId": 1,
+      "isActive": true
+  },
+  {
+      "title": "Rollcakes",
+      "description": "Rollcakes made with chocolate & cream. Available in white chocolate, dark chocolate, and milk chocolate variants.",
+      "imageUrl": "https://therecipecritic.com/wp-content/uploads/2023/02/swiss_roll_cake-1.jpg",
+      "offeredPrice": 30000,
+      "VendorId": 1,
+      "isActive": false
+  },
+  {
+      "title": "Steamcakes",
+      "description": "5 steamcakes per box.",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNwqJzFmS-eRq2B1PwiqAk34_bQNsJLgxyNQ&usqp=CAU",
+      "offeredPrice": 25000,
+      "VendorId": 1,
+      "isActive": false
+  },
+  {
+      "title": "Cheesecake",
+      "description": "Decadent cheesecake with cream topping.",
+      "imageUrl": "https://www.allrecipes.com/thmb/DHosjm3NundSDP1q6wWEEECYwr8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/8419-easy-sour-cream-cheesecake-DDMFS-beauty-4x3-BG-2747-44b427d330aa41aa876269b1249698a0.jpg",
+      "offeredPrice": 73000,
+      "VendorId": 2,
+      "isActive": false
+  },
+  {
+      "title": "Macarons",
+      "description": "8 per box. Available in chocolate, vanilla, banana, lemon, and orange variants.",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGIcVjaZBacZm7ynwX-nMol1sBBhvd-6xSWw&usqp=CAU",
+      "offeredPrice": 20000,
+      "VendorId": 2,
+      "isActive": false
+  },
+  {
+      "title": "Lapis legit",
+      "description": "Selling lapis legit per 100g order.",
+      "imageUrl": "https://asset.kompas.com/crops/i7TdPpVaNLsW3htXJgAVWGlsguo=/0x0:698x465/780x390/data/photo/2021/02/03/601a47c7b5d32.jpg",
+      "offeredPrice": 8000,
+      "VendorId": 1,
+      "isActive": true
+  },
+  {
+      "title": "Black forest cake",
+      "description": "Black forest cake. Available to ship in 2x24 h.",
+      "imageUrl": "https://www.oliviascuisine.com/wp-content/uploads/2016/03/Black-Forest-Cake-Hero-480x480.jpg",
+      "offeredPrice": 10000,
+      "VendorId": 2,
+      "isActive": false
+  },
+  {
+      "title": "Muffins",
+      "description": "Custom order muffins for parties and workplace events. Base rate goes for Rp 200.000 for a box of 24 muffins. Contact for more details.",
+      "imageUrl": "https://www.allrecipes.com/thmb/RdyL1EgIB0Qq_fr5HjdsAmcpMlU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/228553-moist-chocolate-muffins-DDMFS-4x3-a9f73a46938547c99d921613dc167741.jpg",
+      "offeredPrice": 200000,
+      "VendorId": 2,
+      "isActive": true
+  },
+  {
+      "title": "Chocolate Fountain",
+      "description": "Chocolate fountain for rent. Offering Rp 320.000 to rent for a full day.",
+      "imageUrl": "https://jayaagungmesin.com/wp-content/uploads/2023/03/chocolate-fountain-machine.jpg",
+      "offeredPrice": 320000,
+      "VendorId": 2,
+      "isActive": true
+  },
+  {
+      "title": "Artisanal Macarons",
+      "description": "Artisanal Macarons. Available in red velvet, popcorn, sea salt, mint, and lemon chocolate variants.",
+      "imageUrl": "https://assets-pergikuliner.com/E23ghpFFOs9JR4rfOukoX458oGY=/fit-in/1366x768/smart/filters:no_upscale()/https://assets-pergikuliner.com/uploads/image/picture/2154926/picture-1614234562.jpg",
+      "offeredPrice": 115000,
+      "VendorId": 2,
+      "isActive": true
+  }
+]

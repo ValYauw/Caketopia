@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Transactions</title>
+    <title>Caketopia - Transactions</title>
     <%- include('partials/declaration') %>
     <link rel="stylesheet" href="/public/assets/styleEga.css" />
   </head>
@@ -13,7 +13,7 @@
       <h1>Cart</h1>
       <h3>List of Transactions :</h3>
       <div>
-        <%if(user.roles === "Customer"){ %> <% transactions.map((el, index) => {
+        <%if(user.role === "Customer"){ %> <% transactions.map((el, index) => {
         %>
         <div
           style="
@@ -23,11 +23,11 @@
             padding: 12px;
           "
         >
-          <p><%= index+1%>. Transaction : <%=el.id%></p>
-          <p>Status : <%=el.status%></p>
-          <p><%=el.dateOrdered%></p>
+          <p><%= index+1 %>. Transaction : <%= el.id %></p>
+          <p>Status : <%= el.status %></p>
+          <p><%= el.dateOrdered %></p>
         </div>
-        <% })%> <%}%> <%if(user.roles === "Vendor"){ %> <% transactions.map((el,
+        <% })%> <%}%> <%if(user.role === "Vendor"){ %> <% transactions.map((el,
         index) => { %>
         <div
           style="

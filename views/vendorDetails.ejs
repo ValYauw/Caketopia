@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Vendor Detail</title>
+        <title>Caketopia - Vendor Detail</title>
         <%- include('partials/declaration') %>
         <link rel="stylesheet" href="/public/assets/styleEga.css" />
     </head>
@@ -23,7 +23,13 @@
             </p>
             <% if (isLoggedIn) { %>
                 <p>
-                    <button><a href="/chatroom/<%= vendors.id %>">Chat directly with vendor</a></button>
+                    <button><a href="/chatroom/<%= vendors.id %>">
+                        <% if (session.user.role === 'Vendor' && session.user.id === vendors.id) { %> 
+                            Go to personal chatroom
+                        <% } else { %>
+                            Chat directly with vendor
+                        <% } %>
+                    </a></button>
                 </p>
             <% } %>
             <h3>List of Items : </h3>

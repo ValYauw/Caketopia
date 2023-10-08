@@ -46,7 +46,7 @@ module.exports = (sequelize, DataTypes) => {
                     notEmpty: { msg: "Password is required" },
                 },
             },
-            roles: {
+            role: {
                 type: DataTypes.ENUM("Vendor", "Customer"),
                 allowNull: false,
                 validate: {

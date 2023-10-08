@@ -11,7 +11,7 @@ module.exports = {
             },
             status: {
                 allowNull: false,
-                type: Sequelize.STRING(20),
+                type: Sequelize.ENUM('Pending confirmation', 'Payment pending', 'Preparing'),
             },
             dateOrdered: {
                 allowNull: false,

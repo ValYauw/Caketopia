@@ -4,14 +4,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login</title>
+  <title>Caketopia - Login</title>
   <%- include('partials/declaration') %>
 </head>
 
 <body>
   <%- include('partials/header', {isLoggedIn: false}) %>
     <div class="main">
-      <h1>You're logging in as a <strong><%= roles %></strong></h1>
+      <h1>You're logging in as a <strong><%= role %></strong></h1>
 
       <% if (error) { %>
         <div class="notify">
@@ -19,16 +19,24 @@
         </div>
       <% } %>
 
-      <form action="/login<%= roles === 'Vendor' ? '/vendors' : '' %>" method="post" class="ui form">
+      <form action="/login<%= role === 'Vendor' ? '/vendors' : '' %>" method="post" class="ui form">
 
         <div class="field">
-          <label for="name">Username</label>
-          <input name="name" type="text" placeholder="john1234">
+          <label for="email">Email</label>
+          <input name="email" type="text" placeholder="john.doe@mail.com">
         </div>
 
         <div class="field">
           <label for="password">Password</label>
           <input name="password" type="password" placeholder="swordfish">
+        </div>
+
+        <div class="field">
+          <label>
+            <a href="/login<%= role === 'Customer' ? '/vendors' : '' %>">
+              I would like to login as a <%= role === 'Customer' ? 'vendor' : 'customer' %>
+            </a>
+          </label>
         </div>
 
         <input type="submit" class="ui button">

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Cakes</title>
+        <title>Caketopia - Cakes</title>
 
         <%- include('partials/declaration') %>
         <link rel="stylesheet" href="/public/assets/styleEga.css" />
@@ -26,19 +26,19 @@
         </div>
 
         <div class="flexDiv">
-            <% cakes.forEach((el)=>{ %>
+            <% cakes.forEach((el) => { %>
             <div class="card">
                 <img
                     src="<%= el.imageUrl %>"
                     alt="<%= el.title %>"
                     height="150px"
-                    style="margin: auto; width: 240px"
+                    style="margin: auto; width: 240px; <%= el.isActive ? '' : 'opacity: 0.4;' %>"
                 />
                 <div
                     style="text-align: center; padding: 0px"
                     class="resetMargin"
                 >
-                    <h4><%= el.formatCake%></h4>
+                    <h4><%= el.title %></h4>
                     <p>Price : <%= formatThousand(el.offeredPrice) %></p>
 
                     <% if (el.isActive) { %>
@@ -50,7 +50,7 @@
                 <div style="margin-top: 20px">
                     <p>Vendor: <a href="/vendors/<%= el.User.id %>"><%= el.User.name%></a></p>
                 </div>
-                <% if(isLoggedIn && session.user.roles === "Customer"){ %>
+                <% if(isLoggedIn && session.user.role === "Customer"){ %>
 
                 <button style="width: 100%; padding: 12px; margin-top: 8px">
                     <a href="/cakes/<%=el.id%>"> Add to Cart </a>

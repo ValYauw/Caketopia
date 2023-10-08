@@ -98,7 +98,7 @@ class Controller {
     const session = req.session;
     User.findAll({
       where: {
-        roles: "Vendor",
+        role: "Vendor",
       },
     })
       .then((data) => {
@@ -158,20 +158,20 @@ class Controller {
     console.log(user, 77);
     const mappedTransaction = cart.map((el) => {
       return {
-        status: "pending confirmation",
+        status: "Pending confirmation",
         dateOrdered: new Date(),
         CustomerId: user.id,
       };
     });
 
     Transaction.bulkCreate(mappedTransaction)
-      .then((data1) => {
-        const mappedTransactionItem = data1.map((el, index) => {
+      .then((data) => {
+        const mappedTransactionItem = data.map((el, index) => {
           return { TransactionId: el.id, ServiceId: cart[index].id };
         });
         return TransactionItem.bulkCreate(mappedTransactionItem);
       })
-      .then((data2) => {
+      .then(() => {
         req.session.cart = [];
         res.redirect("/transactions");
       })
@@ -184,9 +184,9 @@ class Controller {
     const isLoggedIn = req.session.authenticated;
     const session = req.session;
     if (!isLoggedIn) {
-      res.send("Harus Login");
+      res.send("You must be logged in first");
     }
-    if (user.roles === "Customer") {
+    if (user.role === "Customer") {
       Transaction.findAll({
         where: {
           CustomerId: user.id,
@@ -200,7 +200,7 @@ class Controller {
         });
       });
     }
-    if (user.roles === "Vendor") {
+    if (user.role === "Vendor") {
       TransactionItem.findAll({
         include: [
           {
